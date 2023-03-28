@@ -1,7 +1,7 @@
 def base_decorator(func):
-    def wrapper():
+    def wrapper(*args, **kwargs):
         print('I am called before the function invocation!')
-        func()
+        func(*args, **kwargs)
         print('It seems the function invocation is done')
 
     return wrapper

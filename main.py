@@ -33,6 +33,7 @@ def just_raise_errors():
     raise BlockingIOError("This is on purpose")
 
 
+@time_decorator
 @function_details
 def returns_secret_information(aws_key: str, aws_account_name: str):
     super_secret_string = aws_key + aws_account_name
@@ -40,4 +41,4 @@ def returns_secret_information(aws_key: str, aws_account_name: str):
 
 
 if __name__ == '__main__':
-    returns_secret_information("25251251", "michael@aws.org")
+    returns_secret_information("137264121843", "michael@aws.org")
