@@ -3,6 +3,7 @@ import time
 import hashlib
 
 from typing import List
+from functools import lru_cache
 
 from decorators.base_decorator import base_decorator
 from decorators.input_output_decorator import function_details
@@ -38,6 +39,21 @@ def just_raise_errors():
 def returns_secret_information(aws_key: str, aws_account_name: str):
     super_secret_string = aws_key + aws_account_name
     return hashlib.sha256(bytes(super_secret_string, encoding='utf8')).hexdigest()[:8]
+
+
+@time_decorator
+def fib_without_cache(n):
+    if n < 2:
+        return n
+    return fib_without_cache(n - 1) + fib_without_cache(n - 2)
+
+
+@time_decorator
+@lru_cache(maxsize=128)
+def fib_with_cache(n):
+    if n < 2:
+        return n
+    return fib_with_cache(n - 1) + fib_with_cache(n - 2)
 
 
 if __name__ == '__main__':
