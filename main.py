@@ -17,8 +17,8 @@ def say_whee():
 
 
 @time_decorator
-def count_to_random_number():
-    random_number = random.randint(1, 5)
+def count_to_random_number(n):
+    random_number = random.randint(1, n)
     for i in range(random_number):
         time.sleep(i)
 
